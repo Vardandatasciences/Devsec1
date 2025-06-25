@@ -49,20 +49,19 @@ jobs:
         working-directory: frontend
         run: |
           npm install
-                                               
-      - name: Send email notification
+
+      - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.GMAIL_USERNAME }}
-          password: ${{ secrets.GMAIL_PASSWORD }}
-          subject: "CI/CD: ${{ job.status }}"
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "CI/CD : success"
           to: srilakshmi08atchutuni@gmail.com
           from: srilakshmiatchutuni28@gmail.com
           body: |
-            Status: ${{ job.status }}
+            Status: success
 
             Regards,  
             GRC CI/CD System
-
