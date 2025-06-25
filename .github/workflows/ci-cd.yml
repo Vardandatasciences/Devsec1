@@ -55,8 +55,8 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_PASSWORD }}
           subject: "CI/CD: ${{ job.status }}"
           to: srilakshmi08atchutuni@gmail.com
           from: srilakshmiatchutuni28@gmail.com
