@@ -49,19 +49,14 @@ jobs:
         working-directory: frontend
         run: |
           npm install
-          
-      - name: Send Email Notification
-        uses: dawidd6/action-send-mail@v3
-        with:
-            server_address: smtp.gmail.com
-            server_port: 587
-            username: ${{ secrets.EMAIL_USER }}
-            password: ${{ secrets.EMAIL_PASS }}
-            subject: "CI/CD: success"
-            to: srilakshmi.a@vardaanglobal.com
-            from: srilakshmiatchutuni28@gmail.com
-            body: |
-            Status: success
 
-             Regards,  
-             GRC CI/CD System
+      - name: Install Cypress
+        working-directory: frontend
+        run: |
+          npm install cypress --save-dev
+
+      - name: Run Cypress Tests
+        working-directory: frontend
+        run: |
+          npx cypress run
+
