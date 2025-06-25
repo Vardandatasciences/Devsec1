@@ -49,7 +49,7 @@ jobs:
         working-directory: frontend
         run: |
           npm install
-
+                                               
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
@@ -57,13 +57,11 @@ jobs:
           server_port: 587
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "GRC CI/CD Status: ${{ job.status }}"
+          subject: "CI/CD: ${{ job.status }}"
           to: vdatasciences@gmail.com
-          from: "GRC Bot <vdatasciences@gmail.com>"
+          from: vdatasciences@gmail.com
           body: |
-            Hello Team,
+            Status: ${{ job.status }}
 
-            The CI/CD pipeline has completed with the status: ${{ job.status }}.
-
-            Regards,
+            Regards,  
             GRC CI/CD System
