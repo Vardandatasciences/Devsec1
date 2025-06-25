@@ -1,0 +1,9 @@
+Django>=4.2
+djangorestframework
+djangorestframework-simplejwt
+PyJWT
+django-cors-headers
+python-dotenv
+openpyxl>=3.1.2
+mysqlclient
+bandit

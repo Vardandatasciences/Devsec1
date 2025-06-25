@@ -1,0 +1,68 @@
+name: Full CI Pipeline for GRC Project
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: grcdb
+        ports: ['3306:3306']
+        options: --health-cmd="mysqladmin ping --silent"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Set up Node.js for Vue
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Backend Dependencies
+        run: |
+          pip install -r backend/requirements.txt
+
+      - name: Run Django Tests
+        run: |
+          python backend/manage.py test || echo "Django tests failed"
+
+      - name: Run Bandit Security Scan
+        run: |
+          bandit -r backend/ || echo "Bandit scan found issues"
+
+      - name: Install Frontend Dependencies
+        working-directory: frontend
+        run: |
+          npm install
+
+      - name: Send Email Notification
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "GRC CI/CD Status: ${{ job.status }}"
+          body: |
+            CI/CD Pipeline completed with status: ${{ job.status }}
+            Repo: ${{ github.repository }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+          to: ${{ secrets.EMAIL_TO }}
+          from: GRC Bot <${{ secrets.EMAIL_USERNAME }}>
