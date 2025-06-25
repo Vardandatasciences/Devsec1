@@ -58,5 +58,5 @@ jobs:
       - name: Run Cypress Tests
         working-directory: frontend
         run: |
-          npx cypress run
+             npx cypress run --config-file frontend/integration/cypress.json
 
