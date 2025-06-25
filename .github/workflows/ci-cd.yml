@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.OUTLOOK_USERNAME }}
           password: ${{ secrets.OUTLOOK_PASSWORD }}
           subject: "CI/CD Workflow Status: ${{ job.status }}"
-          to: srilakshmiatchutuni28@gmail.com
+          to: srilakshmi.a@vardaanglobal.com.com
           from: srilakshmiatchutuni28@gmail.com
           body: |
             CI/CD pipeline has completed.
