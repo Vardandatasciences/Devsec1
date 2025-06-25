@@ -50,19 +50,20 @@ jobs:
         run: |
           npm install
 
-      - name: Send Email Notification
-        if: always()
+      - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
           subject: "GRC CI/CD Status: ${{ job.status }}"
+          to: vdatasciences@gmail.com
+          from: "GRC Bot <vdatasciences@gmail.com>"
           body: |
-            CI/CD Pipeline completed with status: ${{ job.status }}
-            Repo: ${{ github.repository }}
-            Branch: ${{ github.ref }}
-            Commit: ${{ github.sha }}
-          to: ${{ secrets.EMAIL_TO }}
-          from: GRC Bot <${{ secrets.EMAIL_USERNAME }}>
+            Hello Team,
+
+            The CI/CD pipeline has completed with the status: ${{ job.status }}.
+
+            Regards,
+            GRC CI/CD System
