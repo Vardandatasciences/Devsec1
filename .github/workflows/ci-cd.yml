@@ -51,22 +51,18 @@ jobs:
           npm install
                                                
       - name: Send email notification
-        if: always()
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.office365.com
+          server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.OUTLOOK_USERNAME }}
-          password: ${{ secrets.OUTLOOK_PASSWORD }}
-          subject: "CI/CD Workflow Status: ${{ job.status }}"
-          to: srilakshmi.a@vardaanglobal.com.com
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "CI/CD: ${{ job.status }}"
+          to: srilakshmi08atchutuni@gmail.com
           from: srilakshmiatchutuni28@gmail.com
           body: |
-            CI/CD pipeline has completed.
-
             Status: ${{ job.status }}
-            Timestamp: ${{ github.event.head_commit.timestamp }}
 
-            Regards,
+            Regards,  
             GRC CI/CD System
 
