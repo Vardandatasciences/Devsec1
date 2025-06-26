@@ -1,15 +1,13 @@
-const { defineConfig } = require('cypress')
-
-module.exports = defineConfig({
+module.exports = {
   e2e: {
-    baseUrl: 'http://localhost:3000',
+    supportFile: false,  // Disable the support file if not needed
+    baseUrl: 'http://localhost:3000',  // Adjust as needed
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: 'cypress/support/e2e.js'
   },
   component: {
     devServer: {
-      framework: 'vue', // Use Vue.js framework
-      bundler: 'vite',  // Use Vite as the bundler
+      framework: 'vue', // Adjust as needed
+      bundler: 'vite',  // Adjust as needed
     },
   },
-})
+};
