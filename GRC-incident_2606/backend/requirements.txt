@@ -1,0 +1,13 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+PyJWT
+python-dotenv
+openpyxl>=3.1.2  # For Excel file handling
+mysqlclient
+boto3
+mysql-connector
+pandas
+xmltodict
+reportlab

@@ -1,0 +1,516 @@
+/* Modern UI Variables for Tailoring Risk Form */
+:root {
+  --form-primary: #6a5acd;
+  --form-primary-light: #8677dd;
+  --form-primary-dark: #483d8b;
+  --form-secondary: #5a4ccd;
+  --form-success: #4cc9f0;
+  --form-warning: #f8961e;
+  --form-danger: #e63946;
+  --form-light: #f8f9fa;
+  --form-dark: #212529;
+  --form-gray-100: #f8f9fa;
+  --form-gray-200: #e9ecef;
+  --form-gray-300: #dee2e6;
+  --form-gray-400: #ced4da;
+  --form-gray-500: #adb5bd;
+  --form-gray-600: #6c757d;
+  --form-gray-700: #495057;
+  --form-gray-800: #343a40;
+  --form-gray-900: #212529;
+  --form-border-radius: 8px;
+  --form-box-shadow: 0 4px 6px rgba(106, 90, 205, 0.1), 0 1px 3px rgba(106, 90, 205, 0.08);
+  --form-transition: all 0.3s ease;
+  
+  /* Validation colors */
+  --validation-error: #e63946;
+  --validation-error-bg: rgba(230, 57, 70, 0.05);
+  --validation-error-border: rgba(230, 57, 70, 0.3);
+}
+
+/* Global Styles */
+.tailoring-risk-container {
+  padding: 16px 16px 16px 220px;
+  background: none;
+  min-height: 100vh;
+  height: 100vh;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--form-gray-800);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Risk ID Container - Centered at the top */
+.risk-id-container {
+  max-width: 400px;
+  margin: 0 auto 20px auto;
+  justify-self: center;
+  width: 100%;
+}
+
+.risk-id-container .risk-dropdown-container {
+  width: 100%;
+}
+
+/* Risk Dropdown Styles */
+.risk-dropdown-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.risk-dropdown-container input[type="text"] {
+  flex: 1;
+  padding-right: 40px;
+  cursor: pointer;
+  height: 34px;
+  padding: 8px 10px;
+  border: 1px solid var(--form-gray-300);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: var(--form-transition);
+  background-color: var(--form-gray-100);
+}
+
+.dropdown-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 34px;
+  width: 34px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--form-primary);
+  transition: var(--form-transition);
+}
+
+.dropdown-toggle:hover {
+  color: var(--form-primary-dark);
+}
+
+.risk-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  background: white;
+  border: 1px solid var(--form-gray-300);
+  border-radius: var(--form-border-radius);
+  box-shadow: var(--form-box-shadow);
+  z-index: 1000;
+  margin-top: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.risk-dropdown-search {
+  padding: 8px;
+  border-bottom: 1px solid var(--form-gray-200);
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.risk-dropdown-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--form-gray-300);
+  border-radius: var(--form-border-radius);
+  font-size: 0.85rem;
+}
+
+.risk-dropdown-search input:focus {
+  outline: none;
+  border-color: var(--form-primary);
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
+}
+
+.risk-dropdown-list {
+  overflow-y: auto;
+  max-height: 350px;
+}
+
+.risk-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--form-gray-200);
+  cursor: pointer;
+  transition: var(--form-transition);
+  display: flex;
+  align-items: flex-start;
+}
+
+.risk-item:hover {
+  background-color: rgba(106, 90, 205, 0.05);
+}
+
+.risk-item-checkbox {
+  margin-right: 10px;
+  padding-top: 2px;
+}
+
+.risk-item-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border: 2px solid var(--form-primary);
+}
+
+.risk-item-content {
+  flex: 1;
+}
+
+.risk-item-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.risk-id {
+  font-weight: 600;
+  color: var(--form-primary);
+  font-size: 0.85rem;
+}
+
+.risk-criticality {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.risk-criticality.critical {
+  background-color: rgba(230, 57, 70, 0.1);
+  color: #e63946;
+}
+
+.risk-criticality.high {
+  background-color: rgba(248, 150, 30, 0.1);
+  color: #f8961e;
+}
+
+.risk-criticality.medium {
+  background-color: rgba(76, 201, 240, 0.1);
+  color: #4cc9f0;
+}
+
+.risk-criticality.low {
+  background-color: rgba(67, 170, 139, 0.1);
+  color: #43aa8b;
+}
+
+.risk-category {
+  padding: 2px 6px;
+  background-color: rgba(106, 90, 205, 0.1);
+  color: var(--form-primary);
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.risk-item-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.risk-item-description {
+  font-size: 0.8rem;
+  color: var(--form-gray-700);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.risk-item-damage {
+  font-size: 0.8rem;
+  color: var(--form-gray-700);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.loading-spinner {
+  padding: 20px;
+  text-align: center;
+  color: var(--form-gray-600);
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: var(--form-gray-600);
+  font-style: italic;
+}
+
+/* Header Styles */
+.tailoring-risk-container h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: black;
+  margin: 0 0 24px 0;
+  padding-bottom: 8px;
+  position: relative;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+
+.tailoring-risk-container h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 60px;
+  background-color: #6a5acd;
+  border-radius: 2px;
+}
+
+/* Form Container Styles */
+.risk-form {
+  padding: 0;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Form Row Styles - New for horizontal layout */
+.form-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 0; /* Ensures proper flex shrinking */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--form-gray-700);
+  margin-bottom: 2px;
+}
+
+.form-group label i {
+  color: var(--form-primary);
+  font-size: 0.8rem;
+  width: 14px;
+  text-align: center;
+}
+
+.form-control {
+  padding: 8px 10px;
+  border: 1px solid var(--form-gray-300);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  resize: none;
+  transition: var(--form-transition);
+  background-color: var(--form-gray-100);
+  width: 100%;
+  box-sizing: border-box;
+  height: 34px;
+}
+
+select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236a5acd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+  padding-right: 28px;
+  background-color: white;
+  border-color: rgba(106, 90, 205, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+textarea.form-control {
+  min-height: 100px;
+  height: 100px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--form-primary);
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
+  background-color: white;
+}
+
+/* Validation error styles */
+.has-error {
+  border-color: var(--validation-error) !important;
+  background-color: var(--validation-error-bg) !important;
+}
+
+.field-error {
+  color: var(--validation-error);
+  font-size: 0.75rem;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.validation-summary {
+  background-color: var(--validation-error-bg);
+  border: 1px solid var(--validation-error-border);
+  border-radius: var(--form-border-radius);
+  padding: 12px 16px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.validation-summary-header {
+  color: var(--validation-error);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.validation-summary-header i {
+  font-size: 1rem;
+}
+
+.validation-error-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.validation-error-list li {
+  color: var(--form-gray-800);
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  background: var(--form-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--form-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  width: auto;
+  height: 38px;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  background: var(--form-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(67, 97, 238, 0.25);
+}
+
+.submit-btn:disabled {
+  background: var(--form-gray-400);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.clear-btn {
+  background: white;
+  color: var(--form-gray-700);
+  border: 1px solid var(--form-gray-300);
+  border-radius: 6px;
+  padding: 6px 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--form-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  width: auto;
+  height: 38px;
+}
+
+.clear-btn:hover {
+  background: var(--form-gray-200);
+  color: var(--form-gray-900);
+}
+
+.message {
+  margin-top: 20px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.success {
+  background-color: var(--form-primary);
+  color: white;
+  box-shadow: 0 4px 20px rgba(106, 90, 205, 0.15);
+}
+
+.error {
+  background-color: var(--form-danger);
+  color: white;
+  box-shadow: 0 4px 20px rgba(230, 57, 70, 0.15);
+}
+
+/* Fix for smaller screens */
+@media (max-width: 1200px) {
+  .form-row {
+    flex-wrap: wrap;
+  }
+  
+  .form-row .form-group {
+    flex: 1 1 45%;
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tailoring-risk-container {
+    padding: 12px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .form-row .form-group {
+    width: 100%;
+  }
+} 
