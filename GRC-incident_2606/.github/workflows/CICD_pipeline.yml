@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.AWS_EC2_USER }}  # EC2 username, like 'ec2-user' or 'ubuntu'
           key: ${{ secrets.AWS_EC2_SSH_KEY }}  # Add EC2 private SSH key to GitHub secrets
           script: |
-            cd /path/to/your/app
+            cd GRC-incident_2606
             git pull origin main2  # Pull the latest changes from the 'main2' branch
             # Restart application service (if any)
             sudo systemctl restart your-app-service
