@@ -50,3 +50,4 @@ jobs:
       - name: Send Email Notification
         run: |
           echo "Build and Deployment Success!" | mail -s "CI/CD Pipeline Status" srilakshmi.a@vardaanglobal.com
+          
